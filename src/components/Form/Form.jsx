@@ -1,6 +1,5 @@
-import React, {useCallback, useEffect} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import './Form.css'
-import {useState} from "react";
 import {useTelegram} from "../../hooks/useTelegram";
 
 
@@ -21,9 +20,9 @@ const Form = () => {
     }, [])
 
     useEffect(() => {
-        tg.WebApp.onEvent('mainButtonClicker', onSendData)
+        tg.WebApp.onEvent('mainButtonClicked', onSendData)
         return () => {
-            tg.WebApp.offEvent('mainButtonClicker', onSendData);
+            tg.WebApp.offEvent('mainButtonClicked', onSendData);
         }
     }, []);
 
